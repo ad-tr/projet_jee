@@ -30,21 +30,19 @@ public class MaterielController {
         return "materiels/liste";
     }
 
-    // Affiche le formulaire vide
     @GetMapping("/nouveau")
     public String formulaireAjout(Model model) {
         model.addAttribute("materiel", new Materiel());
         return "materiels/formulaire";
     }
 
-    // Traite la soumission du formulaire
     @PostMapping("/nouveau")
     public String ajout(@Valid @ModelAttribute("materiel") Materiel materiel,
             BindingResult result) {
         if (result.hasErrors()) {
-            return "materiels/formulaire"; // Erreurs → on réaffiche le formulaire
+            return "materiels/formulaire";
         }
         materielService.save(materiel);
-        return "redirect:/materiels"; // Succès → retour à la liste
+        return "redirect:/materiels";
     }
 }
