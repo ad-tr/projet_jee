@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion du matériel</title>
+
+</head>
+
+<body>
+
+    <h1>Gestion du matériel informatique</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr th:if="${#lists.isEmpty(materiels)}">
+                <td colspan="4" class="message-vide">Aucun matériel enregistré pour l'instant.</td>
+            </tr>
+
+            <tr th:each="materiel : ${materiels}">
+                <td th:text="${materiel.id}">1</td>
+                <td th:text="${materiel.nom}">MacBook Pro</td>
+                <td th:text="${materiel.type}">PC</td>
+                <td>
+                    <span th:if="${materiel.disponible}" class="badge disponible">✓ Disponible</span>
+                    <span th:unless="${materiel.disponible}" class="badge emprunte">✗ Emprunté</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
