@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un matériel</title>
+</head>
+
+<body>
+
+    <h1>Ajouter un matériel</h1>
+
+    <form th:action="@{/materiels/nouveau}" th:object="${materiel}" method="post">
+
+        <div>
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" th:field="*{nom}" placeholder="Ex : MacBook Pro" />
+            <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" style="color:red;"></span>
+        </div>
+
+        <div>
+            <label for="type">Type :</label>
+            <input type="text" id="type" th:field="*{type}" placeholder="Ex : Ordinateur" />
+            <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}" style="color:red;"></span>
+        </div>
+
+        <div>
+            <label for="disponible">Disponible :</label>
+            <input type="checkbox" id="disponible" th:field="*{disponible}" />
+        </div>
+
+        <button type="submit">Enregistrer</button>
+        <a th:href="@{/materiels}">Annuler</a>
+
+    </form>
+
+</body>
+
+</html>
