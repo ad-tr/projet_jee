@@ -15,9 +15,6 @@ public class MaterielService {
         this.materielRepository = materielRepository;
     }
 
-    /**
-     * Retourne la liste de tout le matériel disponible en base.
-     */
     public List<Materiel> findAll() {
         return materielRepository.findAll();
     }
